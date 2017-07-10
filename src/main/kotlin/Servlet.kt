@@ -13,11 +13,18 @@ class Servlet : HttpServlet() {
         val password = req.getParameter("password")?.trim().orEmpty()
 
         if (!PSQL.isConnected) PSQL.connect()
-        val user = PSQL.doSelect("SELECT * FROM users WHERE login='$login';")
+        val user = PSQL.doSelect(
+            "SELECT * FROM users WHERE login='$login' and password='$password';"
+        )
         if (!user!!.next()) {
             PSQL.doInsert(
                 "INSERT INTO users (login, password) VALUES ('$login', '$password');"
             )
+            req.setAttribute("System_message", "New user added")
+        } else if (user.next() && password != user.getString("password")) {
+            req.setAttribute("System_message", "Password wrong")
+        } else {
+            req.setAttribute("System_message", "Successful")
         }
         req.getRequestDispatcher("index.jsp").forward(req, resp)
     }
