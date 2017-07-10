@@ -9,3 +9,5 @@ gradlew.bat
 .idea
 *.iml
 local.properties
+
+/lib

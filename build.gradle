@@ -1,8 +1,9 @@
-group 'webapp'
-version '1.0-SNAPSHOT'
+group "webapp"
+version "1.0-SNAPSHOT"
 
 buildscript {
-    ext.kotlin_version = '1.1.2-2'
+    ext.javaeeapi_version = "7.0"
+    ext.kotlin_version = "1.1.3-2"
 
     repositories {
         mavenCentral()
@@ -12,27 +13,15 @@ buildscript {
     }
 }
 
-apply plugin: 'kotlin'
-apply plugin: 'war'
+apply plugin: "kotlin"
+apply plugin: "war"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile group: 'javax', name: 'javaee-api', version: '7.0'
+    compile "javax:javaee-api:$javaeeapi_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-}
-
-sourceSets {
-    main {
-        kotlin {
-            srcDir "src/main/kotlin"
-        }
-    }
-    test {
-        kotlin {
-            srcDir "test/main/kotlin"
-        }
-    }
+    compile "org.postgresql:postgresql:42.1.1.jre7"
 }
