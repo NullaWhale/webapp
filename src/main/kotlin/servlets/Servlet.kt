@@ -16,14 +16,14 @@ class Servlet : HttpServlet() {
         if (!PSQL.isConnected) PSQL.connect()
         val user = PSQL.doSelect("SELECT * FROM users WHERE login='$login';")
         if (user!!.next()) {
-            if (password == user.getString("password")) {
+            if (md5(password) == user.getString("password")) {
                 req.setAttribute("System_message", "Successful")
             } else {
                 req.setAttribute("System_message", "Wrong password, try again")
             }
         } else {
             PSQL.doInsert(
-                    "INSERT INTO users (login, password) VALUES ('$login', '$password');"
+                    "INSERT INTO users (login, password) VALUES ('$login', '${md5(password)}');"
             )
             req.setAttribute("System_message", "New user added")
         }
