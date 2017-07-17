@@ -4,6 +4,8 @@ version "1.0-SNAPSHOT"
 buildscript {
     ext.javaeeapi_version = "7.0"
     ext.kotlin_version = "1.1.3-2"
+    ext.postgres_version = "42.1.1.jre7"
+    ext.hibernate_version = "5.2.10.Final"
 
     repositories {
         mavenCentral()
@@ -23,5 +25,7 @@ repositories {
 dependencies {
     compile "javax:javaee-api:$javaeeapi_version"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
-    compile "org.postgresql:postgresql:42.1.1.jre7"
+    compile "org.postgresql:postgresql:$postgres_version"
+    compile "org.hibernate:hibernate-gradle-plugin:$hibernate_version"
+    compile "org.hibernate:hibernate-entitymanager:$hibernate_version"
 }
