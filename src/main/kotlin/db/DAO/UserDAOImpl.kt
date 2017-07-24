@@ -1,6 +1,6 @@
-package helpers.DAO
+package db.DAO
 
-import models.User
+import db.models.User
 
 class UserDAOImpl: DAOImpl<User>(), UserDAO {
 

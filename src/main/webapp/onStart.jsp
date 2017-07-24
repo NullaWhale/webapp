@@ -6,6 +6,6 @@
     </head>
 
     <body>
-        <h1>Go to <a href="/login">Log In page</a> </h1>
+        <h1>Go to <a href="/offers">Log In page</a> </h1>
     </body>
 </html>

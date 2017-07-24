@@ -1,6 +1,6 @@
-package helpers.DAO
+package db.DAO
 
-import models.User
+import db.models.User
 
 interface UserDAO{
     fun createUser(login: String, password: String): Boolean
