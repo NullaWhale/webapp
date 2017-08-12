@@ -1,4 +1,4 @@
-package models
+package db.models
 
 import java.io.Serializable
 import javax.persistence.*
@@ -7,7 +7,7 @@ private const val TABLE_NAME = "t_users"
 
 @Entity
 @Table(name = TABLE_NAME)
-public class User(): Serializable {
+public class User : Serializable {
     public var id: Int = 0
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
