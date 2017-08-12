@@ -3,7 +3,7 @@ package models
 import java.io.Serializable
 import javax.persistence.*
 
-const val TABLE_NAME = "t_users"
+private const val TABLE_NAME = "t_users"
 
 @Entity
 @Table(name = TABLE_NAME)
@@ -25,6 +25,6 @@ public class User(): Serializable {
         set
 
     override public fun toString(): String {
-        return "User [id=$id, name=$login, age=$password]"
+        return "User [id=$id, name=$login, password=$password]"
     }
 }
